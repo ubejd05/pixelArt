@@ -1,16 +1,18 @@
 let body = document.querySelector("body");
-
+let colorInput = document.querySelector('#color');
+let divs = document.querySelectorAll('div');
 
 let sectionArr = [];
-let divArr = [];
-let sectionNum = 40;
-let divsPerSection = 60;
-let divNum;
+let sectionNum = 20;
 
+let divArr = [];
+let divsPerSection = 30;
+let divNum = sectionNum * divsPerSection;
 let divHeight = "15px";
 let divWidth = "15px";
 
-divNum = sectionNum * divsPerSection;
+let color;
+
 
 
 
@@ -28,6 +30,26 @@ for (let i = 0; i < sectionArr.length; i++) {
    body.appendChild(sectionArr[i]);
 }
 
+colorInput.addEventListener('change', function (e) {
+   color = this.value;
+   return color;
+});
+
+// div.forEach(div, 
+//    addEventListener('click', function (e) {
+//    this.style.backgroundColor = color
+// }));
+
+document.querySelectorAll('div').forEach(div => {
+   div.addEventListener('click', function (e) {
+      if (this.style.backgroundColor === "") {
+         this.style.backgroundColor = color;
+      } else {
+         this.style.backgroundColor = "";
+      }
+   })
+   // console.log(div);
+});
 
 
 
@@ -50,6 +72,7 @@ function createDiv() {
       div.style.width = divWidth;
       div.style.height = divHeight;
       div.style.border = "1px solid black";
+      div.style.transition = "all .2s"
       divArr.push(div);
    }
    return divArr;
