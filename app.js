@@ -1,6 +1,7 @@
 let body = document.querySelector("body");
 let colorInput = document.querySelector('#color');
-let divs = document.querySelectorAll('div');
+// let divs = document.querySelectorAll('div'); //Nuk po punon
+let clearBtn = document.querySelector('button');
 
 let sectionArr = [];
 let sectionNum = 20;
@@ -11,7 +12,7 @@ let divNum = sectionNum * divsPerSection;
 let divHeight = "15px";
 let divWidth = "15px";
 
-let color;
+let color = colorInput.value;
 
 
 
@@ -35,11 +36,6 @@ colorInput.addEventListener('change', function (e) {
    return color;
 });
 
-// div.forEach(div, 
-//    addEventListener('click', function (e) {
-//    this.style.backgroundColor = color
-// }));
-
 document.querySelectorAll('div').forEach(div => {
    div.addEventListener('click', function (e) {
       if (this.style.backgroundColor === "") {
@@ -51,6 +47,12 @@ document.querySelectorAll('div').forEach(div => {
    // console.log(div);
 });
 
+
+clearBtn.addEventListener('click', function (e) {
+   document.querySelectorAll('div').forEach((div) => {
+      div.style.backgroundColor = "";
+   })
+});
 
 
 
